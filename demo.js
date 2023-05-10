@@ -39,16 +39,57 @@
 // }
 
 // Tag Name
-var li = document.getElementsByTagName('li');
-console.log(li);
-console.log(li[1]);
-li[1].textContent = 'hello2';
-li[1].style.fontWeight = 'bold';
-li[1].style.backgroundColor = 'green';
+// var li = document.getElementsByTagName('li');
+// console.log(li);
+// console.log(li[1]);
+// li[1].textContent = 'hello2';
+// li[1].style.fontWeight = 'bold';
+// li[1].style.backgroundColor = 'green';
 
 
-// items.style.backgroundColor = 'yellow';    -->  its not working showing error
-for(var i = 0; i< li.length; i++){
-    // li[i].style.fontWeight= 'bold';
-    li[i].style.backgroundColor='yellow';
-}
+// // items.style.backgroundColor = 'yellow';    -->  its not working showing error
+// for(var i = 0; i< li.length; i++){
+//     // li[i].style.fontWeight= 'bold';
+//     li[i].style.backgroundColor='yellow';
+// }
+
+// QuerySelector //
+
+// var header = document.querySelector('#main-header');
+// header.style.borderBottom = 'balck';
+// var input = document.querySelector('input');
+// input.value= 'hello world';
+// var submit = document.querySelector("input[type='submit']");
+// submit.value ='send';
+// var item = document.querySelector('.list-group-item');
+// item.style.color = 'red';
+// var lastitem = document.querySelector('.list-group-item:last-child');
+// lastitem.style.color = 'blue';
+// // var seconditem = document.querySelector('.list-group-item:nth-child(2)');
+// // seconditem.style.color = 'green';
+
+// // Question Code //
+// var seconditem = document.querySelector('.list-group-item:nth-child(2)');
+// seconditem.style.backgroundColor = 'green';
+// var thirditem = document.querySelector('.list-group-item:nth-child(3)');
+// thirditem.style.visibility = 'hidden';
+
+// QuerySelectorALL //
+// var titles = document.querySelectorAll('.title');
+// console.log(titles);
+// titles[0].textContent = 'HELLO';
+
+// var odd = document.querySelectorAll('li:nth-child(2)');
+// // var even = document.querySelectorAll('li:nth-child(even)');
+
+// for(var i =0; i<odd.length;  i++){
+//     odd.style.backgroundColor ='green';
+//     // even[i].style.backgroundColor = 'yellow';
+//}
+
+
+
+
+
+
+
