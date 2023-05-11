@@ -1,28 +1,33 @@
 var form = document.getElementById('addForm');
 var itemList = document.getElementById('items');
-var editbutton = document.getElementById('addForm');
+var filter = document.getElementById('filter');
+
 
 //Form submit event //
 form.addEventListener('submit', addItems);
 //Delete event//
 itemList.addEventListener('click', removeItem);
-//Add Item event //
-editbutton.addEventListener('edit', editItem);
+//filter Item event //
+filter.addEventListener('keyup', filterItems);
 
+form.addEventListener('submit', addItems);
 //Add Items //
 function addItems(e) {
     e.preventDefault();
 
     //Get input Value //
     var newItem = document.getElementById('item').value;
-
+    var secondItem = document.getElementById('item1').value;
     //creat new Li element //
     var li = document.createElement('li');
+  
     //Addclass //
     li.className = 'list-group-item';
+ 
     // console.log(li);
     // Add text node with input value //
     li.appendChild(document.createTextNode(newItem));
+    li.appendChild(document.createTextNode(secondItem));
 
     // create the Delete elememt //
     var deleteBtn = document.createElement('button');
@@ -34,12 +39,6 @@ function addItems(e) {
     //append button to li //
     li.appendChild(deleteBtn);
     itemList.appendChild(li);
-
-    var edit = document.createElement('edit');
-    edit.className = 'form-inline mb-3';
-    edit.appendChild(document.createTextNode(edit));
-    edit.appendChild(edit);
-    editbutton.appendChild(editItem);
 
 }
 
@@ -53,7 +52,22 @@ function addItems(e) {
        }
     }
 
-    //edit Item //
-    function editItem(e){
-        console.log(1);
+    //filter Item //
+    function filterItems(e){
+        //convert into lowerCase//
+    var text = e.target.value.toLowerCase();
+    // console.log(text);
+    //GET li//
+    var items = itemList.getElementsByTagName('li');
+    //convert into array //
+    Array.from(items).forEach(function(item){
+        var itemName = item.firstChild.textContent;
+        var description = item.childNodes[1].textContent;
+        if(itemName.toLowerCase().indexOf(text) != -1 || description.toLowerCase().indexOf(text) != -1){
+            item.style.display ='block';
+        }else{
+            item.style.display ='none';
+        }
+    });
     }
+
