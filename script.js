@@ -1,73 +1,29 @@
-var form = document.getElementById('addForm');
-var itemList = document.getElementById('items');
-var filter = document.getElementById('filter');
+var AddForm = document.getElementById("addForm");
 
+AddForm.addEventListener("submit", (e) => {
+  e.preventDefault();
 
-//Form submit event //
-form.addEventListener('submit', addItems);
-//Delete event//
-itemList.addEventListener('click', removeItem);
-//filter Item event //
-filter.addEventListener('keyup', filterItems);
+  var name = document.getElementById("name");
+  var email = document.getElementById("email");
 
-form.addEventListener('submit', addItems);
-//Add Items //
-function addItems(e) {
-    e.preventDefault();
+  if (name.value == "" || email.value == "") {
+    alert("Ensure you input a value in both fields!");
+  } else {
+    // perform operation with form input
+    alert("This form has been successfully submitted!");
+    console.log(
+      `This form has a name of ${name.value} and email of ${email.value}`
+    );
 
-    //Get input Value //
-    var newItem = document.getElementById('item').value;
-    var secondItem = document.getElementById('item1').value;
-    //creat new Li element //
-    var li = document.createElement('li');
+    name.value = "";
+    email.value = "";
+  }
   
-    //Addclass //
-    li.className = 'list-group-item';
- 
-    // console.log(li);
-    // Add text node with input value //
-    li.appendChild(document.createTextNode(newItem));
-    li.appendChild(document.createTextNode(secondItem));
-
-    // create the Delete elememt //
-    var deleteBtn = document.createElement('button');
-    // add class to  del button //
-    deleteBtn.className = 'btn btn-danger btn-sm float-right delete';
-    // appent textNode //
-    deleteBtn.appendChild(document.createTextNode('X'));
-    
-    //append button to li //
-    li.appendChild(deleteBtn);
-    itemList.appendChild(li);
-
+});
+function saveToLocalStorage(event){
+    event.preventDefault();
+    const name = event.target.name.value;
+    const email = event.target.email.value;
+    localStorage.setItem('name',name);
+    localStorage.setItem('email',email);
 }
-
-    //remove Item //
-    function removeItem(e){
-       if(e.target.classList.contains('delete')){
-          if(confirm('Are Yoy Sure?')){
-            var li = e.target.parentElement;
-            itemList.removeChild(li);
-          }
-       }
-    }
-
-    //filter Item //
-    function filterItems(e){
-        //convert into lowerCase//
-    var text = e.target.value.toLowerCase();
-    // console.log(text);
-    //GET li//
-    var items = itemList.getElementsByTagName('li');
-    //convert into array //
-    Array.from(items).forEach(function(item){
-        var itemName = item.firstChild.textContent;
-        var description = item.childNodes[1].textContent;
-        if(itemName.toLowerCase().indexOf(text) != -1 || description.toLowerCase().indexOf(text) != -1){
-            item.style.display ='block';
-        }else{
-            item.style.display ='none';
-        }
-    });
-    }
-
